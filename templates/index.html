@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Crop Recommendation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='min.css') }}" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Font Awesome JS -->
+    <script src="{{ url_for('static', filename='one.js') }}" crossorigin="anonymous"></script>
+    <!-- jQuery CDN -->
+    <script src="{{ url_for('static', filename='min.js') }}"></script>
+    <!-- Popper.JS -->
+    <script src="{{ url_for('static', filename='two.js') }}" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='three.js') }}" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="svgs">
+        <img src="{{ url_for('static', filename='bg_svg.svg') }}">
+    </div>
+    <div class="page" id="part1">
+        <div class="info">
+            <div class="heading">
+                <div class="title text-primary">FarmML</div>
+                <div class="title-support">a Crop Recommendation Tool</div>
+            </div>
+            <div class="dev">
+                <div class="text-primary">
+                    <i class="far fa-file-code"></i>&nbsp;Developed by:
+                </div>
+                <ul>
+                    <li>Aditya Panda</li>    
+                    <li>Michael Pasala</li>
+                    <li>Jayden Lu</li>
+                    <li> Jeanie Ho</li>
+                </ul>
+            </div>
+            <div class="btn-grp">
+                <a href="#part3" class="try">
+                    Try it!
+                </a>
+            </div>
+            
+        </div>
+        <div class="imgContainer">
+            <!-- <img src="imgs/farm1.jpg" alt=""> -->
+            <img src="{{ url_for('static', filename='Farming-Vector.png') }}" 
+                width="600"
+                height="400" alt="">
+        </div>
+        <div class="scrollIndicator"></div>
+    </div>
+    <div class="page" id="part2">
+        <div class="card myCard">
+            <div class="myCard-img">
+                <img src="{{ url_for('static', filename='input.svg') }}"  alt="">
+            </div>
+            <div class="myCard-title text-blue">Background</div>
+            <div class="myCard-body ">Farmers are having to adapt to climate change, and with precision agriculture on the rise, we built a tool to help them effectively maximize crop yield without polluting the environment.</div>
+        </div>
+        <div class="card myCard">
+            <div class="myCard-img">
+                <img src="{{ url_for('static', filename='weather.svg') }}" alt="">
+            </div>
+            <div class="myCard-title text-green">Enter details</div>
+            <div class="myCard-body ">Please provide information for your farm like the NPK of the soil, temperature, humidity, ph, and rainfall. </div>
+        </div>
+        <div class="card myCard">
+            <div class="myCard-img">
+                <img src="{{ url_for('static', filename='model.svg') }}" alt="">
+            </div>
+            <div class="myCard-title text-orange">Prediction</div>
+            <div class="myCard-body ">A Crop Recommendation ML model, with 97.7% accuracy, is used to suggest the most suitable crops to grow in a particular farm based on various parameters.</div>
+        </div>
+        <div class="scrollIndicator"></div>
+    </div>
+    <div class="container p-5 page" id="part3">
+        <div class="imgContainer">
+            <img src="{{ url_for('static', filename='plant.svg') }}" alt="">
+        </div>
+        <div class="card shadow-lg col-6 p-0 mx-auto">
+            <div class="card-header text-primary text-center">
+                <h3><u>Crop Recommendation Tool</u></h3>
+            </div>
+            <div class="card-body">
+                <!-- <div class="form-group">
+                    <label for="district">Nitrogen:</label>
+                    <select class="form-control" name="district" id="district"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="crop">Phosphorous:</label>
+                    <input type="text" id="description" name="description">
+                </div>
+
+                <div class="form-group">
+                    <label for="area">Potassium:</label>
+                    <input type="number" min="100" max="10000000" class="form-control" id="area" placeholder="Enter area">
+                </div> -->
+
+                <div class="form-group">
+                    <label for="soil">N, P, K, temperature, humidity, ph, rainfall</label>
+                    <form action="http://localhost:5000/predict" method="POST" size = 200>
+                        <label form="description"></label>
+                        <input type="text" id="description" name="description">
+                        <input type="submit" value="Submit">
+                    </form>
+                    <br>
+                    <br>
+                     <div class="card card-body" style="justify-content: center;">
+                         <h3 class="text-center"><b>You should grow <i>{{ prediction_text }} </i>in your farm</b></h3>
+                    </div>
+                    
+                </div>
+                <!-- <div class="row">
+                    <button class="btn btn-primary mx-auto" id="submit">Predict</button>
+                </div> -->
+            </div>
+            <div class="card-footer" id="prediction">
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(()=>{
+            $('#submit').prop('disabled', true);
+            $('#prediction').hide();
+            var input_lists;
+            $.get('input_lists.txt', (data, status)=>{
+                input_lists = JSON.parse(data);
+            }).done(()=>{
+                let opts = '<option value="" selected hidden disabled>Select district</option>';
+                let dists = input_lists['districts'];
+                for(let i=0; i<dists.length; i++)
+                    opts += '<option value="'+dists[i]+'">'+dists[i]+'</option>';
+                $('#district').html(opts);
+                opts = '<option value="" selected hidden disabled>Select crop</option>';
+                let crops = input_lists['crops'];
+                for(let i=0; i<crops.length; i++)
+                    opts += '<option value="'+crops[i]+'">'+crops[i]+'</option>';
+                $('#crop').html(opts);
+                opts = '<option value="" selected hidden disabled>Select soil type</option>';
+                let soils = input_lists['soils'];
+                for(let i=0; i<soils.length; i++)
+                    opts += '<option value="'+soils[i]+'">'+soils[i]+'</option>';
+                $('#soil').html(opts);
+                
+            });
+        });
+        $('select').change(()=>{
+            var flag = 0;
+            if(!$('#district').val()){ flag = 1; }
+            if(!$('#crop').val()){ flag = 1; }
+            if($('#area').val() == ""){ flag = 1; }
+            if(!$('#soil').val()){ flag = 1; }
+            $('#submit').prop('disabled', flag);
+        })
+        $('input').keyup(()=>{
+            var flag = 0;
+            if(!$('#district').val()){ flag = 1; }
+            if(!$('#crop').val()){ flag = 1; }
+            if($('#area').val() == ""){ flag = 1; }
+            if(!$('#soil').val()){ flag = 1; }
+            $('#submit').prop('disabled', flag);
+        })
+        
+        $('#submit').click(()=>{
+            var paras = 'district='+$('#district').val()+ '&crop='+$('#crop').val() + '&area='+$('#area').val() + '&soil='+$('#soil').val();
+            var res;
+            $.get('predict.php?'+paras, (data, status)=>{
+                // alert(data);
+                res = data;
+            }).done(()=>{
+                $('#prediction').html(res);
+                $('#prediction').show();
+            });
+        })
+    </script>
+</body>
+</html>

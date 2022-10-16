@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  	<link rel="stylesheet" href="{{ url_for('static', filename='asset_code.css') }}" >
+	</head>
+	<body>
+		<div class = "full-background"> 
+			<div class="ribbon">
+				<!-- The left side -->
+				<div class="ribbon__side ribbon__side--l"></div>
+			
+				<!-- The left triangle displayed below the content -->
+				<div class="ribbon__triangle ribbon__triangle--l"></div>
+			
+				<!-- The right triangle displayed below the content -->
+				<div class="ribbon__triangle ribbon__triangle--r"></div>
+			
+				<!-- The right side -->
+				<div class="ribbon__side ribbon__side--r"></div>
+			
+				<!-- The content -->
+				<div class="ribbon__content"></div>
+			</div>
+		<h1>Enter Your Soil Sample</h1>
+
+			<form action="http://localhost:5000/predict" method="POST">
+				<label form="description">Nitrogen:</label>
+				<input type="text" id="description" name="description">
+			</form>
+
+			<!-- <form action="http://localhost:5000/predict" method="GET">
+				<label form="description">Phosphorous:</label>
+				<input type="text" id="description" name="description">
+			</form>
+
+			<form action="http://localhost:5000/predict" method="GET">
+				<label form="description">Potassium:</label>
+				<input type="text" id="description" name="description">
+			</form>
+
+			<form action="http://localhost:5000/predict" method="GET">
+				<label form="description">Temprature:</label>
+				<input type="text" id="description" name="description">
+
+			</form>
+
+			<form action="http://localhost:5000/predict" method="GET">
+				<label form="description">Humidity:</label>
+				<input type="text" id="description" name="description">
+
+			</form>
+
+			<form action="http://localhost:5000/predict" method="GET">
+				<label form="description">PH Level:</label>
+				<input type="text" id="description" name="description">
+
+			</form>
+
+			<form action="http://localhost:5000/predict" method="GET">
+				<label form="description">Rainfall:</label>
+				<input type="text" id="description" name="description">
+
+			</form> -->
+
+			<button> Submit </button>
+		
+
+			<br>
+			<br>
+			Prediction: {{ prediction_text }}
+
+	</body>
+	</div>	
+</html>
