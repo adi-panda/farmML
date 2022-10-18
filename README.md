@@ -1,6 +1,8 @@
 # A revolutionary way to farm crops.
 A machine learning model for crop recommendation.
 
+Developed during hackTX 2022.
+
 To run the app:
 
 - download al the files and keep the same folder structure.
