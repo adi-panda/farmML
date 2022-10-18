@@ -5,7 +5,7 @@ https://youtu.be/nAfO0CTmQ1s
 
 ![alt text](https://user-images.githubusercontent.com/26531244/196326958-b266d75f-26bd-4a06-bbfc-94fbeedef083.png)
 
-https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/256/919/datas/original.png![image](https://user-images.githubusercontent.com/26531244/196326991-9ead6b4c-7391-4b4f-ab64-43716633f747.png)
+![alt text](https://user-images.githubusercontent.com/26531244/196326991-9ead6b4c-7391-4b4f-ab64-43716633f747.png)
 
 Developed during hackTX 2022.
 
@@ -21,7 +21,7 @@ To run the app:
 
 Recently, there has been a trend of lower agricultural engagement: lower employment over time (here) combined with increasing urbanization and a changing climate has led to stress on food production and farmers' livelihoods. Its in this way, we want to help farmers maximize the efficiency of their land use, allowing food production to be continued more sustainably in a changing, challenging future.
 
-https://res.cloudinary.com/devpost/image/fetch/s--B5qQON2b--/c_limit,f_auto,fl_lossy,q_auto:eco,w_900/https://ourworldindata.org/exports/cropland-use-over-the-long-term_v6_850x600.svg![image](https://user-images.githubusercontent.com/26531244/196326896-80c36908-1104-4f9e-8c2e-072fd0abdbc7.png)
+![alt text](https://user-images.githubusercontent.com/26531244/196326896-80c36908-1104-4f9e-8c2e-072fd0abdbc7.png)
 
 
 ## What it does
