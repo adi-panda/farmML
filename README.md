@@ -3,7 +3,7 @@ A machine learning model for crop recommendation.
 
 https://youtu.be/nAfO0CTmQ1s
 
-https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/256/918/datas/original.png![image](https://user-images.githubusercontent.com/26531244/196326958-b266d75f-26bd-4a06-bbfc-94fbeedef083.png)
+![alt text](https://user-images.githubusercontent.com/26531244/196326958-b266d75f-26bd-4a06-bbfc-94fbeedef083.png)
 
 https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/256/919/datas/original.png![image](https://user-images.githubusercontent.com/26531244/196326991-9ead6b4c-7391-4b4f-ab64-43716633f747.png)
 
